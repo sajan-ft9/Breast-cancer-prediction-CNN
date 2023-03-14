@@ -1,0 +1,30 @@
+{% include "header.html" %}
+<div style="height:100vh">
+    <img src="/media/front.png" style="object-fit:cover; height:100vh; width:100%;position:absolute;z-index:-1;opacity:.2" alt="">
+    <div class="">
+        <div class="text-center">
+            <h1>Predict</h1>
+        </div>
+        <div>
+            <div class="container">
+                <p>Predict breast cancer using ultrasound image</p>
+                <form action="/result" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Add Image</label>
+                        <div class="col-sm-10 col-lg-6">
+                            <input type="file" name="image" class="form-control" required>
+                            {% if msg %}
+                                <small style="color: red;">{{ msg }}</small> 
+                              {% endif %}
+
+                        </div>
+                    </div>
+                    <button class="btn btn-success" type="submit">Predict Now</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include "footer.html" %}
